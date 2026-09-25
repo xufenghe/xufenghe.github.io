@@ -48,6 +48,13 @@ h2 { margin: 0 0 0.8rem; font-size: 0.9rem; font-weight: 650; letter-spacing: 0.
 .interests ul { max-width: 46rem; margin: 0; padding-left: 1.2rem; list-style: disc; }
 .interests li + li { margin-top: 0.7rem; }
 .interests strong { font-weight: 600; }
+.projects { padding: 2rem 0 2.4rem; border-top: 1px solid var(--border); }
+.project { max-width: 46rem; }
+.project h3 { margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 600; }
+.project a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+.project a:hover { color: #0b243d; }
+.project a:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+.project-links { display: flex; flex-wrap: wrap; gap: 0.35rem 0.6rem; margin-top: 0.65rem; font-size: 0.9rem; }
 .details { display: grid; grid-template-columns: 1.45fr 1fr; gap: 2.5rem; padding: 2rem 0; border-top: 1px solid var(--border); }
 .degree { font-weight: 550; }
 .muted { color: var(--muted-foreground); font-size: 0.9rem; margin-top: 0.3rem; }
