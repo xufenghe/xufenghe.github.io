@@ -5,7 +5,8 @@ from __future__ import annotations
 
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlsplit
+from posixpath import normpath
+from urllib.parse import unquote, urlsplit
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -44,9 +45,13 @@ class SiteParser(HTMLParser):
 
         for name in ("href", "src"):
             value = attributes.get(name)
-            if not value or not value.startswith("/") or value.startswith("//"):
+            if not value or value.strip().startswith("//"):
                 continue
-            path = urlsplit(value).path.lstrip("/")
+            reference = urlsplit(value.strip())
+            if reference.scheme or reference.netloc or not reference.path:
+                continue
+            # index.html is served at the site root, so both forms resolve there.
+            path = normpath("/" + unquote(reference.path).lstrip("/")).lstrip("/")
             if path:
                 self.local_paths.add(path)
 
